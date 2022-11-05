@@ -1,0 +1,49 @@
+name: "business-insights-and-analytics"
+output_dir: "docs"
+navbar:
+  title: "Business Insights/Analytics (ITEC-620)"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Readings"
+      menu:
+      - text: "Module 1"
+        href: module1.html
+      - text: "Module 2"
+        href: module1.html
+      - text: "Module 3"
+        href: module1.html
+    - text: Classwork
+      menu:
+      - text: Module 1
+        href: readings-module1.html
+      - text: Module 2
+        href: readings-module2.html
+      - text: Module 3
+        href: readings-module3.html
+      - text: Module 4
+        href: readings-module4.html
+    - text: Homework
+      menu:
+      - text: Module 1
+        href: readings-module1.html
+      - text: Module 2
+        href: readings-module2.html
+      - text: Module 3
+        href: readings-module3.html
+      - text: Module 4
+        href: readings-module4.html
+    - text: Practice
+      menu:
+      - text: Module 1
+        href: readings-module1.html
+      - text: Module 2
+        href: readings-module2.html
+      - text: Module 3
+        href: readings-module3.html
+      - text: Module 4
+        href: readings-module4.html
+output:
+  html_document:
+    theme: cosmo
+

@@ -1,0 +1,66 @@
+---
+title: "Assignment 1"
+author: "Johnson ODEJIDE"
+date: "2022-10-31"
+output: word_document
+---
+
+```{r}
+library(tidyverse)
+library(cluster)
+library(DMwR)
+
+Damon <- read_csv("../Dataset/Damon.csv", show_col_types = FALSE)
+```
+
+# 1. R and Descriptive Statistics
+
+## a.) 12th Movie in the dataset
+*Answer*: ***Ocean's Thirteen***
+```{r}
+Damon[12 , ]
+```
+
+## b.) Average value of box office
+*Answer*: ***175.3548***
+```{r}
+mean(Damon$BoxOffice)
+```
+
+## c.) Lowest rating in the dataset
+*Answer*: ***5.6***
+```{r}
+min(Damon$Rating)
+```
+
+## d.) Rows of the dataset containing movies with a rating of 8 or higher.
+```{r}
+Damon[(Damon["Rating"] >= 8), ]
+```
+
+## c.) Resulting 3 centroids
+*Centroids* - **5.9**, **6.9**, and **7.7**
+```{r}
+Damon %>% 
+  select(Rating, BoxOffice) %>% 
+  scale() -> Damon.norm
+
+set.seed(12345)
+
+Damon.kmcluster <- kmeans(Damon.norm, 3, nstart = 10)
+
+unscale(Damon.kmcluster$centers, Damon.norm)
+```
+
+## c.) What the centroids tell us
+
+By looking at the centroids for cluster 1, we can conclude that on average, all the observations have 5.9 ratings and made $104.4M at the box office worldwide. Similarly, for cluster 2, the average ratings for the observations within this cluster are 6.9 and they made $93.7M at the box office worldwide, and for cluster 3, there is an average of 7.7 ratings and $366.7M at the box office worldwide among the observations.
+
+## c.) Number of movies in each of the three clusters
+**Cluster 1** has ***7 movies***
+**Cluster 2** has ***15 movies***
+**Cluster 3** has ***9 movies***
+
+```{r}
+Damon.kmcluster$size
+```
