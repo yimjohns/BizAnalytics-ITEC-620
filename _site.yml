@@ -28,9 +28,9 @@ navbar:
       - text: Association Rule
         href: associationrule.html
       - text: Forecasting
-        href: readings-module2.html
+        href: forecasting.html
       - text: Forecasting (Train and Test)
-        href: readings-module3.html
+        href: forecastts.html
       - text: Module 4
         href: readings-module4.html
     - text: Practice
