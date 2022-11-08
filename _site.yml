@@ -25,11 +25,11 @@ navbar:
         href: readings-module4.html
     - text: Homework
       menu:
-      - text: Module 1
-        href: readings-module1.html
-      - text: Module 2
+      - text: Association Rule
+        href: associationrule.html
+      - text: Forecasting
         href: readings-module2.html
-      - text: Module 3
+      - text: Forecasting (Train and Test)
         href: readings-module3.html
       - text: Module 4
         href: readings-module4.html

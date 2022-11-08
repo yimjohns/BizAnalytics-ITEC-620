@@ -1,0 +1,79 @@
+---
+title: "Association Rule"
+author: "Johnson ODEJIDE"
+date: "2022-11-08"
+output: html_document
+---
+
+### *The folder structure to access the dataset is given as:*
+
+***BizAnalytics > assignments > 02 > Dataset***
+
+I have done this so you don't find it difficult to run the program when you're working
+
+Feel free to modify this part of the code to locate the dataset - Principal.csv
+
+#### Load required libraries
+```{r}
+library(tidyverse) # Required for forecasting - HoltsWinter
+library(arules) # Required for association rules - apriori
+```
+
+
+#### Read data from csv file
+```{r}
+principal <- read_csv("../../assignments/02/Dataset/Principal.csv", show_col_types = FALSE)
+```
+
+#### Transform data to binary from numbers
+```{r}
+principal.binary <- principal >= 0.1
+```
+
+## Question:
+Principal Investment Group offers their clients a variety of different stock and bond funds.  They use a relatively “hands-off” approach, and let clients choose whatever mix of funds they’d like.  They would like to analyze their clients’ choices of funds to see if any obvious patterns emerge, and to identify opportunities to help them improve their portfolios.
+The csv file “Principal” contains information about client investments.  Each row represents a client, and each column represents a stock or bond fund.  A “1” in a cell indicates that the fund comprises at least 10% of that client’s portfolio.
+
+
+# (A)
+***Create a set of association rules, setting the minimum support to 0.03 and minimum confidence to 0.08.  Sort the rules from highest confidence to lowest confidence, and show the resulting list of rules.***
+
+## Notes
+* **This question includes Parameters**
+* **Parameters: support = 0.03, confidence = 0.08** 
+* **Operation: Sort by confidence in the descending order**
+* **My preference is to use dplyr as in methods 1 and 2.**
+* **Method 3 is what we were taught in class.**
+* **I have written all the methods out for any future reference.**
+
+
+# Method 1
+```{r}
+principal.binary %>% 
+  apriori(parameter = list(supp = 0.03, conf = 0.08), data = .) %>% 
+  sort(by = "confidence") -> principal.rules
+inspect(principal.rules)
+```
+
+# Method 2
+```{r}
+principal.binary %>% 
+  apriori(parameter = list(supp = 0.03, conf = 0.08), data = .) %>% 
+  sort(by = "confidence") -> principal.rules2
+inspect(principal.rules2)
+```
+
+
+# Method 3
+```{r}
+rules <- apriori(principal.binary, parameter = list(supp = 0.03, conf = 0.08))
+princip.rules <- sort(rules, by = "confidence")
+inspect(princip.rules)
+```
+
+# (B)
+***There are many association rules in the table with lift ratios that are well below 1.  For example, the association rule: “If BondIndex, then StockIndex” has a lift ratio of 0.61.  What does that reveal about the relationship between these two funds?***
+
+# ..
+With a lift ratio of 0.61, it simply means that it is 61% less likely that those with Bond Index also have a stock index. We could say that the relationship is negligible.
+

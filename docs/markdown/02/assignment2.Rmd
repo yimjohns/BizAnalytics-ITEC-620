@@ -1,0 +1,80 @@
+---
+title: "ITEC 620 - Assignment 2"
+author: "Johnson ODEJIDE"
+date: "2022-11-06"
+output: word_document
+---
+
+## Load required libraries
+```{r}
+library(tidyverse) # Required for forecasting - HoltsWinter
+library(arules) # Required for association rules - apriori
+```
+
+# ***Section 1 - Association Rules***
+## Read data from csv file
+```{r}
+principal <- read_csv("../../assignments/02/Dataset/Principal.csv", show_col_types = FALSE)
+```
+
+## Transform data to binary from numbers
+```{r}
+principal.binary <- principal >= 0.1
+```
+
+# (A)
+```{r}
+rules <- apriori(principal.binary, parameter = list(supp = 0.03, conf = 0.08))
+princip.rules <- sort(rules, by = "confidence")
+inspect(princip.rules)
+```
+
+# (B)
+With a lift ratio of 0.61, it simply means that it is 61% less likely that those with Bond Index also have a stock index. We could say that the relationship is negligible.
+
+
+# ***Section 2 - Forecasting***
+## Read csv from file
+```{r}
+phoneplans <- read_csv("../../assignments/02/Dataset/PhonePlans.csv", show_col_types = FALSE)
+```
+
+# (A)
+
+## Plot of the time series for Land lines in Developing Countries
+```{r}
+landlinedeving.ts <- ts(phoneplans$LandLinesDeveloping, start = 2005, frequency = 1)
+plot(landlinedeving.ts)
+```
+
+# (B)
+
+## Single Exponential Model for Land lines for Developing Countries
+```{r}
+model_landdeving.SESmodel <- HoltWinters(landlinedeving.ts, beta = FALSE, gamma = FALSE)
+plot(model_landdeving.SESmodel, main = "Land lines for developing countries")
+```
+
+## Single Exponential model for Mobile plans for developing countries
+```{r}
+mobplandeving.ts <- ts(phoneplans$MobilePlansDeveloping, start = 2005, frequency = 1)
+model_mobplandeving.SESmodel <- HoltWinters(mobplandeving.ts, beta = FALSE, gamma = FALSE)
+plot(model_mobplandeving.SESmodel, main = "Mobile plans for developing countries")
+```
+
+
+# (C)
+## Predict number of land lines for developing countries in 2022
+The number of land lines for developing countries in 2022 is predicted to be ***471***
+```{r}
+predict(model_landdeving.SESmodel, 1)
+```
+
+## Predict the number of mobile plans for developing countries in 2022
+The number of mobile plans for developing countries in 2022 is predicted to be ***6921***
+```{r}
+predict(model_mobplandeving.SESmodel, 1)
+```
+
+# (D)
+Yes, a double exponential smoothing model would be more appropriate in this case because there is a ***trend*** which is upward in the case of mobile plan and downward in the case of land lines.

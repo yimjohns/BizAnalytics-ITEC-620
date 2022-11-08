@@ -25,7 +25,7 @@ x.training <- ts(USAccDeaths[1:train.periods],start=1973,freq=cycle)
 # Let's also store the full time series in x, which we'll need later:
 x <- ts(USAccDeaths,start=1973,freq=cycle)
 
-
+length(USAccDeaths)
 # Then, build each of the three models using the training set
 x.training.SESmodel <- HoltWinters(x.training, beta=FALSE, gamma=FALSE)
 x.training.DESmodel <- HoltWinters(x.training, gamma=FALSE)

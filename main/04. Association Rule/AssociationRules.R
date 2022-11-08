@@ -20,7 +20,7 @@ library(arules)
 # The easiest way is to save the data set in your working directory, click on the filename
 # in the "Files" tab of the bottom right panel, and then choose "Import Dataset"
 # In this script, the data set is called "voter"
-voter <- read_csv("Dataset/VoterRegistration.csv", show_col_types = FALSE)
+voter <- read_csv("Dataset/04/VoterRegistration.csv", show_col_types = FALSE)
 View(voter)
 
 # Association rules require binary variables
@@ -28,6 +28,8 @@ View(voter)
 # Types can be changed when importing, but the following command is easier; 
 # it converts the whole data set to binary and stores it in voter.binary
 voter.binary <- voter > 0.5
+
+View(voter.binary)
 # View(voter.binary)
 
 # Make sure you have installed and activated the arules package before continuing
