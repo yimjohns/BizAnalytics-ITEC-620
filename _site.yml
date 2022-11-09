@@ -5,6 +5,8 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Association Rule"
+      href: associationrule.html
     - text: "Readings"
       menu:
       - text: "Module 1"
@@ -25,12 +27,12 @@ navbar:
         href: readings-module4.html
     - text: Homework
       menu:
-      - text: Association Rule
+      - text: "Association Rule"
         href: associationrule.html
-      - text: Forecasting
+      - text: "Forecasting"
         href: forecasting.html
       - text: Forecasting (Train and Test)
-        href: forecastts.html
+        href: forecast-ts.html
       - text: Module 4
         href: readings-module4.html
     - text: Practice
