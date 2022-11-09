@@ -22,7 +22,7 @@ library(arules) # Required for association rules - apriori
 
 #### Read data from csv file
 ```{r}
-principal <- read_csv("../../assignments/02/Dataset/Principal.csv", show_col_types = FALSE)
+principal <- read_csv("../assignments/02/Dataset/Principal.csv", show_col_types = FALSE)
 ```
 
 #### Transform data to binary from numbers
