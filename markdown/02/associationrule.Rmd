@@ -75,5 +75,5 @@ inspect(princip.rules)
 ***There are many association rules in the table with lift ratios that are well below 1.  For example, the association rule: “If BondIndex, then StockIndex” has a lift ratio of 0.61.  What does that reveal about the relationship between these two funds?***
 
 # ..
-With a lift ratio of 0.61, it simply means that it is 61% less likely that those with Bond Index also have a stock index. We could say that the relationship is negligible.
+With a lift ratio of 0.61, it simply means that it is 39% less likely that those with Bond Index also have a stock index. We could say that the relationship is negligible.
 
