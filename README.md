@@ -26,4 +26,4 @@ Preferably RStudio
 <a href="https://www.rstudio.com/products/rstudio/download/" target=_blank>Download RStudio IDE</a>
 
 <br><br>
-Check out the <a href="https://yimjohns.github.io/BizAnalytics-ITEC-620" target=_blank/>Biz Analytics Page</a>
+Check out the <a href="https://yimjohns.github.io/BizAnalytics-ITEC-620/index.html" target=_blank/>Biz Analytics Page</a>
