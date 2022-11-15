@@ -1,0 +1,94 @@
+---
+title: "Multiple Regression Model"
+author: "Johnson ODEJIDE"
+date: "2022-11-15"
+output: html_document
+---
+
+The folder structure to locate the dataset is given below: 
+
+***BizAnalytics > assignments > 08 > Dataset***
+
+The dataset named ***BloodPressure.csv*** contains four variables - Age, Weight, Female and BloodPressure.
+
+The goal is to fit a linear regression model to predict the blood pressure given the age, weight, and gender of a person.
+
+The regression equation is given below:
+
+***E(y) = b0 + b1x1 + b1x2 + b1x3***
+
+where *y* is the independent (Response) variable - ***Blood Pressure***
+
+*b0* is the *intercept* 
+
+*b1* is the *co-efficient* of the independent (Predictor) variable x1 - *Age*
+
+*b2* is the *co-efficient* of the independent (Predictor) variable x2 - *Weight*
+
+*b3* is the *co-efficient* of the independent (Predictor) variable x3 - *Female*
+
+
+
+### Load library
+```{r}
+# To install tidyverse un-comment the next line by removing the "#" character.
+
+# install.packages("tidyverse")
+library(tidyverse)
+```
+
+
+
+### Read csv file
+```{r}
+bp <- read_csv("../docs/dataset/08/BloodPressure.csv", show_col_types = F)
+
+head(bp)
+```
+
+
+### Draw a plot to visualize the relationships
+```{r}
+plot(bp)
+```
+
+From the plot, we can see there is a positive relationship between BloodPressure and Weight as well as Age.
+
+The Female is a categorical variable that indicates 1 for Female and 0 for Male, hence, it looks somewhat straight.
+
+We may fit the model.
+
+
+### Fit the model
+```{r}
+bp.MLModel <- lm(BloodPressure ~ Age + Weight + Female, bp)
+```
+
+
+
+### Derive the Summary
+```{r}
+summary(bp.MLModel)
+```
+
+
+
+### Create new data points for prediction
+```{r}
+new.points <- data.frame(
+  Age = 40,
+  Weight = 170,
+  Female = 0
+)
+```
+
+### Predict the new data points
+```{r}
+predict(bp.MLModel, newdata = new.points)
+```
+
+### Get the confidence interval at 95%
+```{r}
+predict(bp.MLModel, newdata = new.points, interval="prediction")
+```
+

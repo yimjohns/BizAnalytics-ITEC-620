@@ -1,0 +1,39 @@
+---
+title: "Simple Linear Regression"
+author: "Johnson ODEJIDE"
+date: "2022-11-15"
+output: html_document
+---
+The folder structure to locate the dataset is given below: 
+
+***BizAnalytics > assignments > 08 > Dataset***
+
+The dataset named ***Camry.csv*** contains two variables - Miles and Price.
+The goal is to fit a simple linear regression model to predict Price given Mile.
+***E(y) = b0 + b1x*** where *y* is the independent (Response) variable - Price, 
+*b0* is the *intercept*, *b1* is the *co-efficient* of the independent (Predictor) variable x - *Miles*
+
+### Load library
+```{r}
+library(tidyverse)
+```
+
+
+### Read the file
+```{r}
+
+camry = read_csv("../docs/dataset/08/Camry.csv", show_col_types = F)
+
+```
+
+
+### Fit the linear model
+```{r}
+camry.SLRModel <- lm(Price ~ Miles, camry)
+```
+
+
+### Derive the summary
+```{r}
+summary(camry.SLRModel)
+```

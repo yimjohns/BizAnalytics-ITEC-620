@@ -1,7 +1,8 @@
 library(tidyverse)
 library(arules)
 
-principal <- read_csv("../BizAnalytics/assignments/02/Dataset/Principal.csv", show_col_types = FALSE)
+principal <- read_csv("../BizAnalytics/assignments/02/Dataset/Principal.csv", 
+                      show_col_types = FALSE)
 
 # View(principal)
 principal.binary <- principal >= 0.1
